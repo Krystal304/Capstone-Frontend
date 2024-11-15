@@ -23,17 +23,26 @@ dotenv.config();
 let PORT = process.env.PORT || 3001;
 
 //db collection
-connectDB();
-const testQuestion = new QuestionSchema({
-    category: "General Knowledge",
-    type: "multiple",
-    difficulty: "easy",
-    question: "What is the capital of France?",
-    correct_answer: "Paris",
-    incorrect_answers: ["Berlin", "London", "Madrid"]
-});
+// connectDB();
+// async function question(req, res) {
+//     try {}
+//     category: "General Knowledge",
+//     type: "multiple",
+//     difficulty: "easy",
+//     question: "What is the capital of France?",
+//     correct_answer: "Paris",
+//     incorrect_answers: ["Berlin", "London", "Madrid"]
+// };
+ 
+// const existingQuestion = await db.collection('questions').findOne(question);
 
-testQuestion.save();
+// if (existingQuestion) {
+//     console.log('Question already exists in the database.');
+// } else {
+//     await db.collection('questions').insertOne(question);
+//     console.log('Question added to the database.');
+// }
+
 
 //middleware
 app.use(cors());
