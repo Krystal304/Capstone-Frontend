@@ -22,6 +22,18 @@ router.post("/", async (req, res) => {
 
 //read
 
+router.get("/", async (req, res) => {
+    try {
+        //create a variable
+        const allQuestions = await question.find(req.body);
+        res.json(allQuestions);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({msg:'Server Error'});
+        
+    }
+})
+
 //update
 
 //delete
