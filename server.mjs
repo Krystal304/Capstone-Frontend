@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 
 import mongoose from "mongoose";
 import connectDB from "./db/conn.mjs";
-import question from "./models/question.mjs";
+import Question from './models/question.mjs'
 import triviaRoutes from "./routes/TriviaRoutes.mjs";  
 import cors from "cors";
 
@@ -17,11 +17,7 @@ const app = express();
 
 
 //enable CORS
-app.use(cors({
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-}))
+app.use(cors());
 
 
 app.use(express.json());
@@ -41,16 +37,9 @@ connectDB();
 //         message: 'Welcome to the Trivia API'})
 // })
 
-app.get('/', async (req, res) => {
-    try {
-      const questions = await Question.find(); // or however you fetch data
-      res.json(questions);  // Respond with questions data
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Error fetching questions" });
-    }
-  });
+
 app.use('/', triviaRoutes);
+
 
 
 
