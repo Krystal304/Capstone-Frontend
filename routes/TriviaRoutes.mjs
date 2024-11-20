@@ -48,5 +48,16 @@ router.put('/:id', async (req, res) => {
 })
 
 //delete
+router.delete('/:id', async (req, res) => {
+    try {
+       //create a variable
+       let deletedQuestion = await question.findByIdAndDelete(req.params.id)
+       res.json(deletedQuestion);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({msg:'Server Error'});
+        
+    }
+})
 
 export default router;
