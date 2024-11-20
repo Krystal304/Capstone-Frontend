@@ -35,6 +35,17 @@ router.get("/", async (req, res) => {
 })
 
 //update
+router.put('/:id', async (req, res) => {
+    try {
+       //create a variable
+       let updatedQuestion = await question.findByIdAndUpdate(req.params.id, req.body, {new: true})
+       res.json(updatedQuestion);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({msg:'Server Error'});
+        
+    }
+})
 
 //delete
 
