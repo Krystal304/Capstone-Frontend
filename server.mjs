@@ -7,6 +7,7 @@ import connectDB from "./db/conn.mjs";
 import Question from './models/question.mjs'
 import triviaRoutes from "./routes/TriviaRoutes.mjs";  
 import cors from "cors";
+import axios from "axios";
 
 
 
@@ -21,7 +22,8 @@ app.use(cors());
 
 
 app.use(express.json());
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({extended: true}));
 
 
 dotenv.config();
@@ -30,6 +32,7 @@ let PORT = process.env.PORT || 3001;
 
 //db collection
 connectDB();
+//middleware
 
 //import routes
 // app.get('/', (req, res) => {
@@ -44,10 +47,6 @@ app.use('/', triviaRoutes);
 
 
 
-//middleware
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({extended: true}));
 
 //seed route for data folder
 //create item in db
