@@ -32,13 +32,9 @@ let PORT = process.env.PORT || 3001;
 
 //db collection
 connectDB();
-//middleware
 
-//import routes
-// app.get('/', (req, res) => {
-//     res.json({
-//         message: 'Welcome to the Trivia API'})
-// })
+let questions = [
+    { id: 1, question: 'What is the capital of France?', answers: [{ text: 'Paris', correct: true }, { text: 'London', correct: false }, { text: 'Berlin', correct: false }], correctAnswer: 'Paris' },];
 
 
 app.use('/', triviaRoutes);
